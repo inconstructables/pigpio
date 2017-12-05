@@ -96,7 +96,7 @@ install:	$(ALL)
 	install -m 0644 *.1               $(DESTDIR)$(mandir)/man1
 	install -m 0755 -d                $(DESTDIR)$(mandir)/man3
 	install -m 0644 *.3               $(DESTDIR)$(mandir)/man3
-	ldconfig
+	ldconfig .
 
 uninstall:
 	rm -f $(DESTDIR)$(includedir)/pigpio.h
@@ -112,7 +112,7 @@ uninstall:
 	if which python3; then python3 setup.py install --record /tmp/pigpio >/dev/null; xargs rm -f < /tmp/pigpio >/dev/null; fi
 	rm -f $(DESTDIR)$(mandir)/man1/pig*.1
 	rm -f $(DESTDIR)$(mandir)/man3/pig*.3
-	ldconfig
+	ldconfig .
 
 $(LIB1):	$(OBJ1)
 	$(SHLIB) -o $(LIB1) $(OBJ1)
